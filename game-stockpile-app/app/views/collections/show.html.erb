@@ -1,0 +1,39 @@
+<h1><%= @collection.name %></h1>
+
+<h3>Games:</h3>
+
+<ul>
+  <% @videogames.each do |videogame| %>
+    <p><strong>Title: </strong><%= videogame.title %></p>
+    <p><strong>Studio(s): </strong><%= videogame.studio %></p>
+    <p><strong>Platform: </strong><%= videogame.platform %></p>
+    <p><strong>Average Hours to Completion: </strong><%= videogame.avg_hours %></p>
+    <p><strong>Metacritic Score: </strong><%= videogame.metacritic_score %></p>
+  <% end %>
+</ul>
+
+<h3>Add Video Game to Collection:</h3>
+
+<div class="vg">
+    <ul>
+    <%= form_for(@videogame) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br>
+      <%= f.label :studio %>
+      <%= f.text_field :studio %><br>
+      <%= f.label :platform %>
+      <%#= f.select(:platform) do, options_for_select([["PS Vita", "psvita"], ["PS4", "ps4"], ["3DS", "3ds"], ["WiiU", "wiiu"]]) %>
+      <%# end %>
+      <%= f.text_field :platform %><br>
+      <%= f.label :avg_hours %>
+      <%= f.text_field :avg_hours %><br>
+      <%= f.label :metacritic_score %>
+      <%= f.text_field :metacritic_score %><br>
+        <%= f.fields_for :videogame_collection do |vc| %>
+          <%= vc.label :complete? %>
+          <%= vc.check_box :complete?, {}, true, false %>
+        <% end %>
+      <%= f.submit "Add Video Game"%>
+    <% end %>
+    </ul>
+</div>

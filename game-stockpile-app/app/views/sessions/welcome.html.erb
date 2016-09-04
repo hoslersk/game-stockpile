@@ -1,0 +1,7 @@
+<h1>Stockpile</h1>
+
+<h3>A way to track and organize your video game backlog!</h3>
+
+<% if current_user %>
+<h4><%= link_to "Your Collections", user_path(session[:user_id]) %></h4>
+<% end %>

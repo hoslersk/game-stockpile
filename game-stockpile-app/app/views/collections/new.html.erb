@@ -1,0 +1,32 @@
+<%= form_for(@collection) do |f| %>
+<ul>
+  <%= f.label "Collection Name" %>
+  <%= f.text_field :name %><br>
+  <%#= f.label "Please Add a Minimum of One Video Game:" %>
+  
+      <%#= f.fields_for :videogame_collections do |vc| %>
+
+        <%#= vc.label :videogame_id %>
+        <%#= vc.text_field :videogame_id %>
+        <%#= vc.label :collection_id %>
+        <%#= vc.text_field :collection_id %>
+        <%#= f.collection_select :collection_id, Collection.all, :id, :name %>
+
+        <%#= vc.label :complete? %>
+        <%#= vc.check_box :complete?, {}, true, false %>
+        <%#= vc.fields_for :videogame do |v| %>
+          <%#= v.label :title %>
+          <%#= v.text_field :title %>
+          <%#= v.label :studio %>
+          <%#= v.text_field :studio %>
+          <%#= v.label :platform %>
+          <%#= v.text_field :platform %>
+          <%#= v.label :avg_hours %>
+          <%#= v.text_field :avg_hours %>
+          <%#= v.label :metacritic_score %>
+          <%#= v.text_field :metacritic_score %>
+        <%# end %>
+    <%# end %>
+  <%= f.submit 'Add Collection' %>
+</ul>
+<% end %>
