@@ -9,9 +9,53 @@
     <h4>Collections:</h4>
       <ul>
         <% @collections.each do |collection| %>
-          <p><%= link_to collection.name, collection_path(collection) %></p>
+          <p><%= link_to collection.name, collection_path(collection) %> <%= button_to "Remove Collection", collection, :method => :delete %></p>
         <% end %>
       </ul>
-      <p><%= link_to "Add Collection", new_collection_path %></p>
+      <h4>New Collection:</h4>
+      <ul>
+        <%= form_for(@collection) do |f| %>
+          <p><strong><%= f.label "New Collection Name:" %></strong>
+          <%= f.text_field :name %></p>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <p><%= f.label :choose_videogame %>
+          <%= f.collection_check_boxes :videogame_ids, Videogame.all, :id, :title %></p>
+          <ul>
+          <strong><%= f.label "Add New Videogame(s):" %></strong>
+          <%= f.fields_for :videogames do |vg| %>
+            <p><%= vg.label :title %>
+            <%= vg.text_field :title %></p>
+            <p><%= vg.label :studio %>
+            <%= vg.text_field :studio %></p>
+            <p><%= vg.label :platform %>
+            <%= vg.text_field :platform %></p>
+            <p><%= vg.label "Average Hours to Completion" %>
+            <%= vg.text_field :avg_hours %></p>
+            <p><%= vg.label :metacritic_score %>
+            <%= vg.text_field :metacritic_score %></p><br>
+          <% end %>
+          </ul>
+
+          <!-- <%#= f.fields_for :videogame_collection do |vgc| %>
+            <p><%#= vgc.label "Game Complete?" %>
+            <%#= vgc.check_box :complete?, {}, true, false %>
+            <%#= vgc.fields_for :videogame do |vg| %>
+              <%#= vg.label :title %>
+              <%#= vg.text_field :title %></p>
+              <p><%#= vg.label :studio %>
+              <%#= vg.text_field :studio %></p>
+              <p><%#= vg.label :platform %>
+              <%#= vg.text_field :platform %></p>
+              <p><%#= vg.label "Average Hours to Completion" %>
+              <%#= vg.text_field :avg_hours %></p>
+              <p><%#= vg.label :metacritic_score %>
+              <%#= vg.text_field :metacritic_score %></p>
+            <%# end %>
+          <%# end %> -->
+
+          <%= f.submit 'Add Collection' %>
+        <% end %>
+      </ul>
+      <!-- <p><%#= link_to "Add Collection", new_collection_path %></p> -->
   </body>
 </html>

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160904034952) do
     t.string   "studio"
     t.string   "platform"
     t.integer  "avg_hours"
-    t.float    "metacritic_score"
+    t.integer  "metacritic_score"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

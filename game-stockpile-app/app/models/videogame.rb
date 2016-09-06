@@ -7,7 +7,7 @@ class Videogame < ApplicationRecord
   has_many :collections, through: :videogame_collections
   has_many :users, through: :collections
 
-  accepts_nested_attributes_for :videogame_collections#,
+  #accepts_nested_attributes_for :videogame_collections#,
   # #        :reject_if => :all_blank,
   # #        :allow_destroy => true
   # accepts_nested_attributes_for :collections#, reject_if: proc { |attributes| attributes['name'].blank? }

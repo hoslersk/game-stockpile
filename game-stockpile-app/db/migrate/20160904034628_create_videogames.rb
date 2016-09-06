@@ -5,7 +5,7 @@ class CreateVideogames < ActiveRecord::Migration[5.0]
       t.string :studio
       t.string :platform
       t.integer :avg_hours
-      t.float :metacritic_score
+      t.integer :metacritic_score
 
       t.timestamps
     end

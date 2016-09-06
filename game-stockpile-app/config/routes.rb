@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :collections, only: [:new, :create, :show, :index]
+  resources :collections, only: [:new, :create, :show, :index, :destroy]
   resources :videogames, only: [:new, :create, :show, :index]
   resources :users, only: [:show]
   get '/signin', to: 'sessions#new', as: 'signin'

@@ -15,7 +15,7 @@ class VideogamesController < ApplicationController
   private
 
   def videogame_params
-    params.require(:videogame).permit(:title, :studio, :platform, :avg_hours, :metacritic_score, videogame_collection_attributes: {})
+    params.require(:videogame).permit(:title, :studio, :platform, :avg_hours, :metacritic_score, :videogame_collection_attributes => [:collection_id, :complete, :videogame_id])
   end
 
 end

@@ -30,6 +30,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @collections = Collection.all
+    @collection = Collection.new
+    # @videogame_collection = VideogameCollection.new
+    # @videogame = Videogame.new
+    3.times {@collection.videogames.build}
   end
 
   private
